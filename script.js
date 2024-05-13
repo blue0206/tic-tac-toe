@@ -52,4 +52,6 @@ const Gameboard = (function() {
         return false;
     }
 
+    return { resetBoard, updateBoard, checkSpaceVacancy, validateMove, checkMatch };
 })();
+
