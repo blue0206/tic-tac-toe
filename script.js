@@ -24,11 +24,11 @@ const Gameboard = (function() {
             }
         }
         return false;
-    }
+    };
 
     const validateMove = (position) => {
         return gameboard[position] == "empty" ? true : false;
-    }
+    };
 
     const checkMatch = () => {
         //Board Outline:
@@ -50,7 +50,7 @@ const Gameboard = (function() {
         }
 
         return false;
-    }
+    };
 
     return { resetBoard, updateBoard, checkSpaceVacancy, validateMove, checkMatch };
 })();
@@ -70,7 +70,45 @@ const Player = function(name, choice) {
 
     const playerMove = () => {
         Gameboard.updateBoard(choice, playerInput());
-    }
+    };
 
     return { name, choice, playerMove };
 };
+
+const gameController = (function() {
+    const playerX = Player("Blue", "X");
+    const playerO = Player("Red", "O");
+    let result = "DRAW";
+
+    const playGame = () => {
+        while (Gameboard.checkSpaceVacancy())
+        {
+            //Player X's turn
+            playerX.playerMove();
+            if (Gameboard.checkMatch())
+            {
+                console.log("The winner is X!");
+                result = `${playerX.name} WINS!`;
+                break;
+            }
+            if (!Gameboard.checkSpaceVacancy())
+            {
+                break;
+            }
+
+            //Player O's turn
+            playerO.playerMove();
+            if (Gameboard.checkMatch())
+            {
+                console.log("The winner is O!");
+                result = `${playerO.name} WINS!`;
+                break;
+            }
+        }
+        return result;
+    };
+
+    return { playGame };
+})();
+
+console.log(gameController.playGame());
