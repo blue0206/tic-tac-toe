@@ -9,6 +9,12 @@ const Gameboard = (function() {
         }
     };
 
+    //Fill board slot with player input
+    const updateBoard = (input, position) => {
+        gameboard[position] = input;
+        console.log(gameboard);
+    };
+
     const checkSpaceVacancy = () => {
         for (let i=0; i<boardSize; i++)
         {
@@ -22,6 +28,28 @@ const Gameboard = (function() {
 
     const validateMove = (position) => {
         return gameboard[position] == "empty" ? true : false;
+    }
+
+    const checkMatch = () => {
+        //Board Outline:
+        //
+        //  0   1   2
+        //  3   4   5
+        //  6   7   8
+
+        if (((gameboard[0] != "empty") && (gameboard[0] == gameboard[1]) && (gameboard[0] == gameboard[2])) ||  //Match ROW 0 1 2
+            ((gameboard[3] != "empty") && (gameboard[3] == gameboard[4]) && (gameboard[3] == gameboard[5])) ||  //Match ROW 3 4 5
+            ((gameboard[6] != "empty") && (gameboard[6] == gameboard[7]) && (gameboard[6] == gameboard[8])) ||  //Match ROW 6 7 8
+            ((gameboard[0] != "empty") && (gameboard[0] == gameboard[3]) && (gameboard[0] == gameboard[6])) ||  //Match COL 0 3 6
+            ((gameboard[1] != "empty") && (gameboard[1] == gameboard[4]) && (gameboard[1] == gameboard[7])) ||  //Match COL 1 4 7
+            ((gameboard[2] != "empty") && (gameboard[2] == gameboard[5]) && (gameboard[2] == gameboard[8])) ||  //Match COL 2 5 8
+            ((gameboard[0] != "empty") && (gameboard[0] == gameboard[4]) && (gameboard[0] == gameboard[8])) ||  //Match DIG 0 4 8
+            ((gameboard[2] != "empty") && (gameboard[2] == gameboard[4]) && (gameboard[2] == gameboard[6])))    //Match DIG 2 4 6
+        {
+            return true;
+        }
+
+        return false;
     }
 
 })();
