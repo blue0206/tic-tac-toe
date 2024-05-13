@@ -55,3 +55,22 @@ const Gameboard = (function() {
     return { resetBoard, updateBoard, checkSpaceVacancy, validateMove, checkMatch };
 })();
 
+const Player = function(name, choice) {
+    const playerInput = () => {
+        let position = parseInt(prompt("Enter position:"));
+        if (Gameboard.validateMove(position))
+        {
+            return position;
+        }
+        else
+        {
+            playerInput();
+        }
+    };
+
+    const playerMove = () => {
+        Gameboard.updateBoard(choice, playerInput());
+    }
+
+    return { name, choice, playerMove };
+};
