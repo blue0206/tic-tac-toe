@@ -75,7 +75,7 @@ const Player = function(name, choice) {
     return { name, choice, playerMove };
 };
 
-const gameController = (function() {
+const GameController = (function() {
     const playerX = Player("Blue", "X");
     const playerO = Player("Red", "O");
     let result = "DRAW";
@@ -111,4 +111,4 @@ const gameController = (function() {
     return { playGame };
 })();
 
-console.log(gameController.playGame());
+console.log(GameController.playGame());
