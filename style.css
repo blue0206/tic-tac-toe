@@ -40,18 +40,22 @@ body {
 
 header {
     grid-area: header;
+    border: 1px solid black;
 }
 
 aside {
     grid-area: sidebar;
+    border: 1px solid black;
 }
 
 main {
     grid-area: main;
+    border: 1px solid black;
 }
 
 footer {
     grid-area: footer;
+    border: 1px solid black;
 }
 
 /* Header Styling */
