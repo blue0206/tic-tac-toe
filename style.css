@@ -19,7 +19,37 @@ input, button, textarea, select {
 button, input {
     padding: 0;
     border: none;
+    background: none;
 }
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
+}
+
+/* My Styling */
+body {
+    min-height: 98vh;
+    min-height: 100dvh;
+
+    display: grid;
+    grid-template-rows: minmax(auto, 150px) 1fr minmax(auto, 125px);
+    grid-template-columns: auto 5fr;
+    grid-template-areas: 'sidebar header'
+                        'sidebar main'
+                        'sidebar footer';
+}
+
+header {
+    grid-area: header;
+}
+
+aside {
+    grid-area: sidebar;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
 }
