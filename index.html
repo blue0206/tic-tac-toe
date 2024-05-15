@@ -19,7 +19,7 @@
                 <input type="text" id="player-x" name="player-x" />
             </div>
             <div class="form-element">
-                <label for="player-y">Player O Name</label>
+                <label for="player-o">Player O Name</label>
                 <input type="text" id="player-o" name="player-o" />
             </div>
             <div class="form-element">
@@ -28,9 +28,40 @@
         </form>
     </aside>
     <main>
-        <section class="score-table"></section>
-        <section class="gameboard"></section>
-        <section class="configure"></section>
+        <section class="score-table">
+            <div class="players">
+                <h2>Player X</h2>
+                <h2>Player O</h2>
+            </div>
+            <div class="score">
+                <h2>0</h2>
+                <h2>0</h2>
+            </div>
+        </section>
+        <section class="gameboard">
+            <div class="commentary"></div>      <!-- Probably will be used to show comments like "X Wins" or "DRAW" -->
+            <div class="board">
+                <div class="slash"></div>       <!-- Probably will be used to display 'slash' upon a win. -->
+                <div class="board-row">
+                    <button id="b0"></button>
+                    <button id="b1"></button>
+                    <button id="b2"></button>
+                </div>
+                <div class="board-row">
+                    <button id="b3"></button>
+                    <button id="b4"></button>
+                    <button id="b5"></button>
+                </div>
+                <div class="board-row">
+                    <button id="b6"></button>
+                    <button id="b7"></button>
+                    <button id="b8"></button>
+                </div>
+            </div>
+        </section>
+        <section class="configure">
+            <button>RESET</button>
+        </section>
     </main>
     <footer>
         <div>
