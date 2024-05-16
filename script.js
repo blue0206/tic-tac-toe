@@ -1,37 +1,3 @@
-//----------------DOM MANIPULATION----------------
-
-// Sidebar Toggling
-const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
-const sidebar = document.querySelector('aside');
-sidebarToggleBtn.addEventListener('click', () => {
-    if (sidebar.style.getPropertyValue('position') == 'absolute' && 
-        sidebar.style.getPropertyValue('visibility') == 'hidden')
-    {
-        sidebar.style.removeProperty('position');
-        sidebar.style.removeProperty('visibility');
-        sidebarToggleBtn.textContent = "X";
-    }
-    else
-    {
-        sidebar.style.position = 'absolute';
-        sidebar.style.visibility = 'hidden';
-        sidebarToggleBtn.textContent = "=";
-    }
-});
-
-
-// Attach event listener to 'Start Game' form button.
-const submitBtn = document.querySelector('button[type="reset"]');
-submitBtn.addEventListener('click', () => {
-    const nameX = document.querySelector('#player-x').value;
-    const nameO = document.querySelector('#player-o').value;
-    ScreenController(nameX, nameO);
-    sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
-});
-
-
-
-
 //----------------GAME ALGORITHM----------------
 
 const Gameboard = (function() {
@@ -119,6 +85,22 @@ const Player = function(name, choice) {
     return { name, choice, incrementScore, getScore, resetScore, playerMove };
 };
 
+const ScreenController = function(nameX, nameO) {
+
+    const reset = () => {
+        
+    };
+
+    const updateScore = () => {
+        
+    };
+    
+    const updateScreenBoard = () => {
+        
+    };
+    
+};
+
 const GameController = (function() {
     const playerX = Player("Blue", "X");
     const playerO = Player("Red", "O");
@@ -155,18 +137,36 @@ const GameController = (function() {
     return { playGame };
 })();
 
-const ScreenController = function(nameX, nameO) {
 
-    const reset = () => {
-        
-    };
 
-    const updateScore = () => {
-        
-    };
-    
-    const updateScreenBoard = () => {
-        
-    };
-    
-};
+
+//----------------DOM MANIPULATION----------------
+
+// Sidebar Toggling
+const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
+const sidebar = document.querySelector('aside');
+sidebarToggleBtn.addEventListener('click', () => {
+    if (sidebar.style.getPropertyValue('position') == 'absolute' && 
+        sidebar.style.getPropertyValue('visibility') == 'hidden')
+    {
+        sidebar.style.removeProperty('position');
+        sidebar.style.removeProperty('visibility');
+        sidebarToggleBtn.textContent = "X";
+    }
+    else
+    {
+        sidebar.style.position = 'absolute';
+        sidebar.style.visibility = 'hidden';
+        sidebarToggleBtn.textContent = "=";
+    }
+});
+
+
+// Attach event listener to 'Start Game' form button.
+const submitBtn = document.querySelector('button[type="reset"]');
+submitBtn.addEventListener('click', () => {
+    const nameX = document.querySelector('#player-x').value;
+    const nameO = document.querySelector('#player-o').value;
+    ScreenController(nameX, nameO);
+    sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
+});
