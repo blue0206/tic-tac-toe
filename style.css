@@ -67,6 +67,28 @@ header {
     display: grid;
     place-content: center;
     font-size: 2rem;
+
+    position: relative;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    
+    width: 50px;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid black;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    display: grid;
+    place-content: center;
 }
 
 /* Sidebar Styling */
@@ -162,6 +184,10 @@ main {
 .board-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.board-row > button {
+    cursor: pointer;
 }
 
 button#b0 {
