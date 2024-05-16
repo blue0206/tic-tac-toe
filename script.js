@@ -136,3 +136,19 @@ const GameController = (function() {
 
     return { playGame };
 })();
+
+const ScreenController = function(nameX, nameO) {
+
+    const resetScore = () => {
+        
+    };
+
+    const updateScore = () => {
+        
+    };
+    
+    const updateScreenBoard = () => {
+        
+    };
+    
+};
