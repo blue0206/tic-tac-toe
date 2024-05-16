@@ -1,3 +1,29 @@
+//----------------DOM HANDLING----------------
+
+// Sidebar Toggling
+const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
+const sidebar = document.querySelector('aside');
+sidebarToggleBtn.addEventListener('click', () => {
+    if (sidebar.style.getPropertyValue('position') == 'absolute' && 
+        sidebar.style.getPropertyValue('visibility') == 'hidden')
+    {
+        sidebar.style.removeProperty('position');
+        sidebar.style.removeProperty('visibility');
+        sidebarToggleBtn.textContent = "X";
+    }
+    else
+    {
+        sidebar.style.position = 'absolute';
+        sidebar.style.visibility = 'hidden';
+        sidebarToggleBtn.textContent = "=";
+    }
+});
+
+
+
+
+//----------------GAME ALGORITHM----------------
+
 const Gameboard = (function() {
     const gameboard = Array(9).fill("empty");
     const boardSize = 9;
@@ -110,5 +136,3 @@ const GameController = (function() {
 
     return { playGame };
 })();
-
-console.log(GameController.playGame());
