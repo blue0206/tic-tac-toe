@@ -92,6 +92,14 @@ const Gameboard = (function() {
 })();
 
 const Player = function(name, choice) {
+    let score = 0;
+    
+    const incrementScore = () => score++;
+
+    const getScore = () => score;
+
+    const resetScore = () => score = 0;
+
     const playerInput = () => {
         let position = parseInt(prompt("Enter position:"));
         if (Gameboard.validateMove(position))
@@ -108,7 +116,7 @@ const Player = function(name, choice) {
         Gameboard.updateBoard(choice, playerInput());
     };
 
-    return { name, choice, playerMove };
+    return { name, choice, incrementScore, getScore, resetScore, playerMove };
 };
 
 const GameController = (function() {
@@ -149,7 +157,7 @@ const GameController = (function() {
 
 const ScreenController = function(nameX, nameO) {
 
-    const resetScore = () => {
+    const reset = () => {
         
     };
 
