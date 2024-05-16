@@ -1,4 +1,4 @@
-//----------------DOM HANDLING----------------
+//----------------DOM MANIPULATION----------------
 
 // Sidebar Toggling
 const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
