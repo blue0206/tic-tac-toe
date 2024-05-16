@@ -20,6 +20,16 @@ sidebarToggleBtn.addEventListener('click', () => {
 });
 
 
+// Attach event listener to 'Start Game' form button.
+const submitBtn = document.querySelector('button[type="reset"]');
+submitBtn.addEventListener('click', () => {
+    const nameX = document.querySelector('#player-x').value;
+    const nameO = document.querySelector('#player-o').value;
+    ScreenController(nameX, nameO);
+    sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
+});
+
+
 
 
 //----------------GAME ALGORITHM----------------
