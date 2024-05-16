@@ -103,7 +103,7 @@ const ScreenController = (function() {
         const boardSlots = document.querySelectorAll('.board-row button');
         for (let i=0; i<boardSlots.length; i++)
         {
-            boardSlots[i].textContent = "";
+            boardSlots[i].textContent = "X";
         }
     };
 
@@ -191,3 +191,8 @@ submitBtn.addEventListener('click', () => {
 
     sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
 });
+
+
+// Attach event listener to the game RESET button.
+const resetBtn = document.querySelector('.configure button');
+resetBtn.addEventListener('click', ScreenController.reset);
