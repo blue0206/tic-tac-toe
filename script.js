@@ -99,7 +99,12 @@ const ScreenController = (function() {
     const getPlayerOName = () => playerOName;
 
     const reset = () => {
-        
+        Gameboard.resetBoard();
+        const boardSlots = document.querySelectorAll('.board-row button');
+        for (let i=0; i<boardSlots.length; i++)
+        {
+            boardSlots[i].textContent = "";
+        }
     };
 
     const updateScore = () => {
