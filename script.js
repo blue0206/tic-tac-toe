@@ -85,7 +85,18 @@ const Player = function(name, choice) {
     return { name, choice, incrementScore, getScore, resetScore, playerMove };
 };
 
-const ScreenController = function(nameX, nameO) {
+const ScreenController = (function() {
+
+    let playerXName = "Player X";
+    let playerOName = "Player O";
+
+    const setPlayerXName = (xName) => playerXName = xName;
+
+    const setPlayerOName = (oName) => playerOName = oName;
+
+    const getPlayerXName = () => playerXName;
+
+    const getPlayerOName = () => playerOName;
 
     const reset = () => {
         
@@ -98,12 +109,14 @@ const ScreenController = function(nameX, nameO) {
     const updateScreenBoard = () => {
         
     };
-    
-};
+
+    return { setPlayerXName, setPlayerOName, getPlayerXName, getPlayerOName, reset };
+
+})();
 
 const GameController = (function() {
-    const playerX = Player("Blue", "X");
-    const playerO = Player("Red", "O");
+    const playerX = Player(ScreenController.getPlayerXName(), "X");
+    const playerO = Player(ScreenController.getPlayerOName(), "O");
     let result = "DRAW";
 
     const playGame = () => {
@@ -167,6 +180,9 @@ const submitBtn = document.querySelector('button[type="reset"]');
 submitBtn.addEventListener('click', () => {
     const nameX = document.querySelector('#player-x').value;
     const nameO = document.querySelector('#player-o').value;
-    ScreenController(nameX, nameO);
+    ScreenController.setPlayerXName(nameX);
+    ScreenController.setPlayerOName(nameO);
+    ScreenController.reset();
+
     sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
 });
