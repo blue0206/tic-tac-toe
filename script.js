@@ -99,6 +99,12 @@ const ScreenController = (function() {
     const playerX = Player("Blue", "X");
     const playerO = Player("Red", "O");
 
+    const board = document.querySelector(".board");
+    let boardSlot = "";
+    board.addEventListener("click", (evnt) => {
+      boardSlot = evnt.target.id.split("")[1];
+    });
+
     const setPlayerXName = (xName) => {
         playerXName.textContent = xName;
         playerX.setName(xName);
@@ -112,13 +118,10 @@ const ScreenController = (function() {
     const getPlayerX = () => playerX;
 
     const getPlayerO = () => playerO;
-
-    const playerInput = (() => {
-        const board = document.querySelector('.board');
-        board.addEventListener('click', (evnt) => {
-            return evnt.target.id.split('')[1];
-        });
-    })();
+    
+    const playerInput = () => {
+        return boardSlot;
+    };
 
     const resetGameBoard = () => {
         Gameboard.resetBoard();
@@ -152,7 +155,8 @@ const ScreenController = (function() {
         setPlayerXName, 
         setPlayerOName, 
         getPlayerX, 
-        getPlayerO, 
+        getPlayerO,
+        playerInput, 
         resetGameBoard,
         resetScoreBoard,
         updateXScore,
