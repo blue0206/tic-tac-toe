@@ -87,18 +87,18 @@ const Player = function(name, choice) {
 
 const ScreenController = (function() {
 
-    let playerXName = "Player X";
-    let playerOName = "Player O";
+    let playerXName = document.querySelector('.players h2:first-child');
+    let playerOName = document.querySelector('.players h2:last-child');
     const playerXScore = document.querySelector(".score h2:first-child");
     const playerOScore = document.querySelector(".score h2:last-child");
 
-    const setPlayerXName = (xName) => playerXName = xName;
+    const setPlayerXName = (xName) => playerXName.textContent = xName;
 
-    const setPlayerOName = (oName) => playerOName = oName;
+    const setPlayerOName = (oName) => playerOName.textContent = oName;
 
-    const getPlayerXName = () => playerXName;
+    const getPlayerXName = () => playerXName.textContent;
 
-    const getPlayerOName = () => playerOName;
+    const getPlayerOName = () => playerOName.textContent;
 
     const resetGameBoard = () => {
         Gameboard.resetBoard();
