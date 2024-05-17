@@ -59,6 +59,14 @@ const Gameboard = (function() {
 
 const Player = function(name, choice) {
     let score = 0;
+
+    const getName = () => name;
+
+    const setName = (newName) => name = newName;
+
+    const getChoice = () => choice;
+
+    const setChoice = (newChoice=choice) => choice = newChoice;
     
     const incrementScore = () => score++;
 
@@ -82,7 +90,16 @@ const Player = function(name, choice) {
         Gameboard.updateBoard(choice, playerInput());
     };
 
-    return { name, choice, incrementScore, getScore, resetScore, playerMove };
+    return { 
+        getName,
+        setName,
+        getChoice,
+        setChoice,
+        incrementScore, 
+        getScore, 
+        resetScore, 
+        playerMove 
+    };
 };
 
 const ScreenController = (function() {
