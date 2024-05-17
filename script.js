@@ -89,6 +89,8 @@ const ScreenController = (function() {
 
     let playerXName = "Player X";
     let playerOName = "Player O";
+    const playerXScore = document.querySelector(".players h2:first-child");
+    const playerOScore = document.querySelector(".players h2:last-child");
 
     const setPlayerXName = (xName) => playerXName = xName;
 
@@ -98,7 +100,7 @@ const ScreenController = (function() {
 
     const getPlayerOName = () => playerOName;
 
-    const reset = () => {
+    const resetGameBoard = () => {
         Gameboard.resetBoard();
         const boardSlots = document.querySelectorAll('.board-row button');
         for (let i=0; i<boardSlots.length; i++)
@@ -107,13 +109,17 @@ const ScreenController = (function() {
         }
     };
 
+    const resetScoreBoard = () => {
+        GameController.resetPlayerScore();
+        playerXScore.textContent = 0;
+        playerOScore.textContent = 0;
+    };
+
     const updateXScore = (score) => {
-        const playerXScore = document.querySelector('.players h2:first-child');
         playerXScore.textContent = score;
     };
     
-    const updateOScore = (score) => {
-        const playerOScore = document.querySelector('.players h2:last-child');
+    const updateOScore = (score) => {   
         playerOScore.textContent = score;
     };
     
@@ -126,7 +132,8 @@ const ScreenController = (function() {
         setPlayerOName, 
         getPlayerXName, 
         getPlayerOName, 
-        reset,
+        resetGameBoard,
+        resetScoreBoard,
         updateXScore,
         updateOScore 
     };
@@ -170,7 +177,12 @@ const GameController = (function() {
         return result;
     };
 
-    return { playGame };
+    const resetPlayerScore = () => {
+        playerX.resetScore();
+        playerO.resetScore();
+    };
+
+    return { playGame, resetPlayerScore };
 })();
 
 
