@@ -108,14 +108,22 @@ const ScreenController = (function() {
     let playerOName = document.querySelector('.players h2:last-child');
     const playerXScore = document.querySelector(".score h2:first-child");
     const playerOScore = document.querySelector(".score h2:last-child");
+    const playerX = Player("Blue", "X");
+    const playerO = Player("Red", "O");
 
-    const setPlayerXName = (xName) => playerXName.textContent = xName;
+    const setPlayerXName = (xName) => {
+        playerXName.textContent = xName;
+        playerX.setName(xName);
+    }
+        
+    const setPlayerOName = (oName) => {
+        playerOName.textContent = oName
+        playerO.setName(oName);
+    };
 
-    const setPlayerOName = (oName) => playerOName.textContent = oName;
+    const getPlayerX = () => playerX;
 
-    const getPlayerXName = () => playerXName.textContent;
-
-    const getPlayerOName = () => playerOName.textContent;
+    const getPlayerO = () => playerO;
 
     const resetGameBoard = () => {
         Gameboard.resetBoard();
@@ -147,8 +155,8 @@ const ScreenController = (function() {
     return { 
         setPlayerXName, 
         setPlayerOName, 
-        getPlayerXName, 
-        getPlayerOName, 
+        getPlayerX, 
+        getPlayerO, 
         resetGameBoard,
         resetScoreBoard,
         updateXScore,
@@ -157,9 +165,7 @@ const ScreenController = (function() {
 
 })();
 
-const GameController = (function() {
-    const playerX = Player(ScreenController.getPlayerXName(), "X");
-    const playerO = Player(ScreenController.getPlayerOName(), "O");
+const GameController = (function(playerX, playerO) {
     let result = "DRAW";
 
     const playGame = () => {
@@ -200,7 +206,7 @@ const GameController = (function() {
     };
 
     return { playGame, resetPlayerScore };
-})();
+})(ScreenController.getPlayerX(), ScreenController.getPlayerO());
 
 
 
