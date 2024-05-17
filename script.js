@@ -103,19 +103,33 @@ const ScreenController = (function() {
         const boardSlots = document.querySelectorAll('.board-row button');
         for (let i=0; i<boardSlots.length; i++)
         {
-            boardSlots[i].textContent = "X";
+            boardSlots[i].textContent = "";
         }
     };
 
-    const updateScore = () => {
-        
+    const updateXScore = (score) => {
+        const playerXScore = document.querySelector('.players h2:first-child');
+        playerXScore.textContent = score;
+    };
+    
+    const updateOScore = (score) => {
+        const playerOScore = document.querySelector('.players h2:last-child');
+        playerOScore.textContent = score;
     };
     
     const updateScreenBoard = () => {
         
     };
 
-    return { setPlayerXName, setPlayerOName, getPlayerXName, getPlayerOName, reset };
+    return { 
+        setPlayerXName, 
+        setPlayerOName, 
+        getPlayerXName, 
+        getPlayerOName, 
+        reset,
+        updateXScore,
+        updateOScore 
+    };
 
 })();
 
@@ -133,6 +147,8 @@ const GameController = (function() {
             {
                 console.log("The winner is X!");
                 result = `${playerX.name} WINS!`;
+                playerX.incrementScore();
+                ScreenController.updateXScore(playerX.getScore());
                 break;
             }
             if (!Gameboard.checkSpaceVacancy())
@@ -146,6 +162,8 @@ const GameController = (function() {
             {
                 console.log("The winner is O!");
                 result = `${playerO.name} WINS!`;
+                playerO.incrementScore();
+                ScreenController.updateOScore(playerO.getScore());
                 break;
             }
         }
