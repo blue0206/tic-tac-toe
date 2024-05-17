@@ -135,7 +135,8 @@ const ScreenController = (function() {
     };
 
     const resetScoreBoard = () => {
-        GameController.resetPlayerScore();
+        playerX.resetScore();
+        playerO.resetScore();
         playerXScore.textContent = 0;
         playerOScore.textContent = 0;
     };
@@ -200,12 +201,7 @@ const GameController = (function(playerX, playerO) {
         return result;
     };
 
-    const resetPlayerScore = () => {
-        playerX.resetScore();
-        playerO.resetScore();
-    };
-
-    return { playGame, resetPlayerScore };
+    return { playGame };
 })(ScreenController.getPlayerX(), ScreenController.getPlayerO());
 
 
