@@ -74,20 +74,8 @@ const Player = function(name, choice) {
 
     const resetScore = () => score = 0;
 
-    const playerInput = () => {
-        let position = parseInt(prompt("Enter position:"));
-        if (Gameboard.validateMove(position))
-        {
-            return position;
-        }
-        else
-        {
-            playerInput();
-        }
-    };
-
     const playerMove = () => {
-        Gameboard.updateBoard(choice, playerInput());
+        Gameboard.updateBoard(choice, ScreenController.playerInput);
     };
 
     return { 
@@ -124,6 +112,13 @@ const ScreenController = (function() {
     const getPlayerX = () => playerX;
 
     const getPlayerO = () => playerO;
+
+    const playerInput = (() => {
+        const board = document.querySelector('.board');
+        board.addEventListener('click', (evnt) => {
+            return evnt.target.id.split('')[1];
+        });
+    })();
 
     const resetGameBoard = () => {
         Gameboard.resetBoard();
