@@ -13,7 +13,10 @@ const Gameboard = (function() {
 
     //Fill board slot with player input
     const updateBoard = (input, position) => {
-        gameboard[position] = input;
+        if (validateMove(position))
+        {
+            gameboard[position] = input;
+        }
         console.log(gameboard);
     };
 
@@ -54,7 +57,7 @@ const Gameboard = (function() {
         return false;
     };
 
-    return { resetBoard, updateBoard, checkSpaceVacancy, validateMove, checkMatch };
+    return { resetBoard, updateBoard, checkSpaceVacancy, checkMatch };
 })();
 
 const Player = function(name, choice) {
