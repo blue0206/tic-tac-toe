@@ -13,11 +13,7 @@ const Gameboard = (function() {
 
     //Fill board slot with player input
     const updateBoard = (input, position) => {
-        if (validateMove(position))
-        {
-            gameboard[position] = input;
-        }
-        console.log(gameboard);
+        gameboard[position] = input;
     };
 
     const checkSpaceVacancy = () => {
@@ -101,7 +97,6 @@ const ScreenController = (function() {
     let playerXTurn = true;
     board.addEventListener("click", (evnt) => {
         let slot = evnt.target.id.split("")[1];
-        console.log(slot);
         switch(slot)
         {
             case undefined:
@@ -214,7 +209,6 @@ const GameController = (function() {
     const postMoveChecksX = () => {
         if (Gameboard.checkMatch())
         {
-            console.log("The winner is X!");
             result = `${playerX.getName()} WINS!`;
             playerX.incrementScore();
             ScreenController.updateXScore(playerX.getScore());
@@ -229,7 +223,6 @@ const GameController = (function() {
     const postMoveChecksO = () => {
         if (Gameboard.checkMatch())
         {
-            console.log("The winner is O!");
             result = `${playerO.getName()} WINS!`;
             playerO.incrementScore();
             ScreenController.updateOScore(playerO.getScore());
