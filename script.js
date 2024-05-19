@@ -95,10 +95,13 @@ const ScreenController = (function() {
     const playerXScore = document.querySelector(".score h2:first-child");
     const playerOScore = document.querySelector(".score h2:last-child");
 
+    const boardSlots = document.querySelectorAll(".board-row button");
+    
     const board = document.querySelector(".board");
     let playerXTurn = true;
     board.addEventListener("click", (evnt) => {
         let slot = evnt.target.id.split("")[1];
+        console.log(slot);
         switch(slot)
         {
             case undefined:
@@ -126,7 +129,6 @@ const ScreenController = (function() {
     };
 
     const resetGameBoard = () => {
-        const boardSlots = document.querySelectorAll('.board-row button');
         for (let i=0; i<boardSlots.length; i++)
         {
             boardSlots[i].textContent = "";
@@ -146,8 +148,8 @@ const ScreenController = (function() {
         playerOScore.textContent = score;
     };
     
-    const updateScreenBoard = () => {
-        
+    const updateGameBoard = (choice, slot) => {
+        boardSlots[slot].textContent = choice;
     };
 
     return { 
@@ -156,7 +158,8 @@ const ScreenController = (function() {
         resetGameBoard,
         resetScoreBoard,
         updateXScore,
-        updateOScore 
+        updateOScore,
+        updateGameBoard
     };
 
 })();
@@ -182,6 +185,7 @@ const GameController = (function() {
         if (Gameboard.validateMove(slot))
         {
             Gameboard.updateBoard(playerX.getChoice(), slot);
+            ScreenController.updateGameBoard(playerX.getChoice(), slot);
         }
     };
 
@@ -190,6 +194,7 @@ const GameController = (function() {
         if (Gameboard.validateMove(slot))
         {
             Gameboard.updateBoard(playerO.getChoice(), slot);
+            ScreenController.updateGameBoard(playerO.getChoice(), slot);
         }
     };
 
