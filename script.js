@@ -96,9 +96,25 @@ const ScreenController = (function() {
     const playerOScore = document.querySelector(".score h2:last-child");
 
     const board = document.querySelector(".board");
-    let boardSlot = "";
+    let playerXTurn = true;
     board.addEventListener("click", (evnt) => {
-      boardSlot = evnt.target.id.split("")[1];
+        let slot = evnt.target.id.split("")[1];
+        switch(slot)
+        {
+            case undefined:
+                break;
+            default:
+                if (playerXTurn)
+                {
+                    playerXTurn = false;
+                    GameController.playerXMove(slot);
+                }
+                else
+                {
+                    playerXTurn = true;
+                    GameController.playerOMove(slot);
+                }
+        }
     });
 
     const setPlayerXName = (xName) => {
