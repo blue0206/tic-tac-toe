@@ -147,7 +147,20 @@ const ScreenController = (function() {
 })();
 
 const GameController = (function() {
+    const playerX = Player("Player X", "X");
+    const playerO = Player("player O", "O");
+
     let result = "DRAW";
+
+    const setPlayerXName = (name) => {
+        playerX.setName(name);
+        ScreenController.setPlayerXName(name);
+    };
+
+    const setPlayerOName = (name) => {
+        playerO.setName(name);
+        ScreenController.setPlayerOName(name);
+    };
 
     const playGame = () => {
         while (Gameboard.checkSpaceVacancy())
@@ -181,7 +194,11 @@ const GameController = (function() {
         return result;
     };
 
-    return { playGame };
+    return {
+        setPlayerXName,
+        setPlayerOName,
+        playGame 
+    };
 })();
 
 
@@ -214,6 +231,8 @@ const submitBtn = document.querySelector('button[type="reset"]');
 submitBtn.addEventListener('click', () => {
     const nameX = document.querySelector('#player-x').value;
     const nameO = document.querySelector('#player-o').value;
+    GameController.setPlayerXName(nameX);
+    GameController.setPlayerOName(nameO);
 
     sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
 });
