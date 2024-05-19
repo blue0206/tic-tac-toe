@@ -12,8 +12,8 @@ const Gameboard = (function() {
     };
 
     //Fill board slot with player input
-    const updateBoard = (input, position) => {
-        gameboard[position] = input;
+    const updateBoard = (input, slot) => {
+        gameboard[slot] = input;
     };
 
     const checkSpaceVacancy = () => {
@@ -27,8 +27,8 @@ const Gameboard = (function() {
         return false;
     };
 
-    const validateMove = (position) => {
-        return gameboard[position] == "empty" ? true : false;
+    const validateMove = (slot) => {
+        return gameboard[slot] == "empty" ? true : false;
     };
 
     const checkMatch = () => {
@@ -143,8 +143,8 @@ const ScreenController = (function() {
         playerOScore.textContent = score;
     };
     
-    const updateGameBoard = (choice, slot) => {
-        boardSlots[slot].textContent = choice;
+    const updateGameBoard = (input, slot) => {
+        boardSlots[slot].textContent = input;
     };
 
     const displayResult = (result) => {
