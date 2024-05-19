@@ -25,12 +25,49 @@ p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
 
+/* Custom Fonts */
+@font-face {
+    font-family: 'roboto';
+    src:
+        url("./files/fonts/roboto-regular-webfont.woff2") format("woff2"),
+        url("./files/fonts/roboto-regular-webfont.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src:
+        url("./files/fonts/roboto-bold-webfont.woff2") format("woff2"),
+        url("./files/fonts/roboto-bold-webfont.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'edo';
+    src:
+        url("./files/fonts/edo-webfont.woff2") format("woff2"),
+        url("./files/fonts/edo-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'shaded';
+    src:
+        url("./files/fonts/fff_tusj-webfont.woff2") format("woff2"),
+        url("./files/fonts/fff_tusj-webfont.woff") format("woff");
+}
+
 /* My Styling */
 :root {
     --board-border: 1px solid black;
 }
 
 body {
+    font-family: 'roboto', system-ui, -apple-system, BlinkMacSystemFont, 
+                'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+                'Helvetica Neue', sans-serif;
+
     min-height: 98vh;
     min-height: 100dvh;
 
@@ -45,6 +82,10 @@ body {
 header {
     grid-area: header;
     border: 1px solid black;
+
+    font-family: 'shaded', 'roboto', system-ui, -apple-system, BlinkMacSystemFont, 
+                'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
+                sans-serif;
 }
 
 aside {
@@ -72,6 +113,9 @@ header {
 }
 
 .sidebar-toggle {
+    font-family: 'roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
     position: absolute;
     top: 5px;
     left: 2px;
@@ -101,6 +145,12 @@ aside {
 }
 
 h2 {
+    font-family: 'roboto', system-ui, -apple-system, BlinkMacSystemFont, 
+            'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
+            sans-serif;
+
+    letter-spacing: 1.5px;
+
     display: grid;
     place-content: center;
     font-size: 1.8rem;
@@ -219,6 +269,10 @@ main {
     cursor: pointer;
     font-size: 6.5rem;
     line-height: 0;
+
+    font-family: 'edo', 'roboto', system-ui, -apple-system, BlinkMacSystemFont, 
+            'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
+            sans-serif;
 }
 
 button#b0 {
