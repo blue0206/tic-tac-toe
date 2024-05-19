@@ -275,6 +275,7 @@ const GameController = (function() {
 
 // Sidebar Toggling
 const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
+const sidebarToggleIcon = document.querySelector('img.toggle');
 const sidebar = document.querySelector('aside');
 sidebarToggleBtn.addEventListener('click', () => {
     if (sidebar.style.getPropertyValue('position') == 'absolute' && 
@@ -282,13 +283,15 @@ sidebarToggleBtn.addEventListener('click', () => {
     {
         sidebar.style.removeProperty('position');
         sidebar.style.removeProperty('visibility');
-        sidebarToggleBtn.textContent = "X";
+        sidebarToggleIcon.src = "./files/icons/close.svg";
+        sidebarToggleIcon.alt = "Close Sidebar";
     }
     else
     {
         sidebar.style.position = 'absolute';
         sidebar.style.visibility = 'hidden';
-        sidebarToggleBtn.textContent = "=";
+        sidebarToggleIcon.src = "./files/icons/left-panel-open.svg";
+        sidebarToggleIcon.alt = "Open Sidebar";
     }
 });
 
