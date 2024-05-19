@@ -179,7 +179,7 @@ const ScreenController = (function() {
 
 const GameController = (function() {
     const playerX = Player("Player X", "X");
-    const playerO = Player("player O", "O");
+    const playerO = Player("Player O", "O");
 
     let result = "DRAW";
 
@@ -194,30 +194,44 @@ const GameController = (function() {
     };
 
     const playerXMove = (slot) => {
-        preMoveChecks();
         if (Gameboard.validateMove(slot))
         {
             Gameboard.updateBoard(playerX.getChoice(), slot);
             ScreenController.updateGameBoard(playerX.getChoice(), slot);
         }
+        postMoveChecksX();
     };
 
     const playerOMove = (slot) => {
-        preMoveChecks();
         if (Gameboard.validateMove(slot))
         {
             Gameboard.updateBoard(playerO.getChoice(), slot);
             ScreenController.updateGameBoard(playerO.getChoice(), slot);
         }
+        postMoveChecksO();
     };
 
-    const preMoveChecks = () => {
+    const postMoveChecksX = () => {
         if (Gameboard.checkMatch())
         {
             console.log("The winner is X!");
-            result = `${playerX.name} WINS!`;
+            result = `${playerX.getName()} WINS!`;
             playerX.incrementScore();
             ScreenController.updateXScore(playerX.getScore());
+        }
+        if (!Gameboard.checkSpaceVacancy())
+        {
+            //  Code
+        }
+    };
+
+    const postMoveChecksO = () => {
+        if (Gameboard.checkMatch())
+        {
+            console.log("The winner is O!");
+            result = `${playerO.getName()} WINS!`;
+            playerO.incrementScore();
+            ScreenController.updateOScore(playerO.getScore());
         }
         if (!Gameboard.checkSpaceVacancy())
         {
