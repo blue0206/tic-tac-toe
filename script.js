@@ -14,6 +14,7 @@ const Gameboard = (function() {
     //Fill board slot with player input
     const updateBoard = (input, slot) => {
         gameboard[slot] = input;
+        console.log(gameboard);
     };
 
     const checkSpaceVacancy = () => {
@@ -104,16 +105,19 @@ const ScreenController = (function() {
             default:
                 if (playerXTurn)
                 {
-                    playerXTurn = false;
                     GameController.playerXMove(slot);
                 }
                 else
                 {
-                    playerXTurn = true;
                     GameController.playerOMove(slot);
                 }
+                console.log(playerXTurn);
         }
     });
+
+    const switchMove = () => {
+        playerXTurn = playerXTurn == true ? false : true;
+    };
 
     const setPlayerXName = (xName) => {
         playerXName.textContent = xName;
@@ -161,6 +165,7 @@ const ScreenController = (function() {
     };
 
     return { 
+        switchMove,
         setPlayerXName, 
         setPlayerOName, 
         resetGameBoard,
@@ -194,6 +199,7 @@ const GameController = (function() {
         {
             Gameboard.updateBoard(playerX.getChoice(), slot);
             ScreenController.updateGameBoard(playerX.getChoice(), slot);
+            ScreenController.switchMove();
         }
         postMoveChecksX();
     };
@@ -203,6 +209,7 @@ const GameController = (function() {
         {
             Gameboard.updateBoard(playerO.getChoice(), slot);
             ScreenController.updateGameBoard(playerO.getChoice(), slot);
+            ScreenController.switchMove();
         }
         postMoveChecksO();
     };
