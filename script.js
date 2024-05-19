@@ -181,7 +181,7 @@ const GameController = (function() {
     const playerX = Player("Player X", "X");
     const playerO = Player("Player O", "O");
 
-    let result = "DRAW";
+    let result = "";
 
     const setPlayerXName = (name) => {
         playerX.setName(name);
@@ -218,10 +218,11 @@ const GameController = (function() {
             result = `${playerX.getName()} WINS!`;
             playerX.incrementScore();
             ScreenController.updateXScore(playerX.getScore());
+            ScreenController.displayResult(result);
         }
         if (!Gameboard.checkSpaceVacancy())
         {
-            //  Code
+            ScreenController.displayResult(result = "DRAW");
         }
     };
 
@@ -232,10 +233,11 @@ const GameController = (function() {
             result = `${playerO.getName()} WINS!`;
             playerO.incrementScore();
             ScreenController.updateOScore(playerO.getScore());
+            ScreenController.displayResult(result);
         }
         if (!Gameboard.checkSpaceVacancy())
         {
-            //  Code
+            ScreenController.displayResult(result = "DRAW");
         }
     };
 
