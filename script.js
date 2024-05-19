@@ -152,6 +152,18 @@ const ScreenController = (function() {
         boardSlots[slot].textContent = choice;
     };
 
+    const displayResult = (result) => {
+        const display = document.querySelector('.commentary');
+        display.style.visibility = 'visible';
+        display.textContent = result;
+
+        display.addEventListener('click', () => {
+            display.style.visibility = 'hidden';
+            display.textContent = "";
+            GameController.resetGameBoard();
+        });
+    };
+
     return { 
         setPlayerXName, 
         setPlayerOName, 
@@ -159,7 +171,8 @@ const ScreenController = (function() {
         resetScoreBoard,
         updateXScore,
         updateOScore,
-        updateGameBoard
+        updateGameBoard,
+        displayResult
     };
 
 })();
