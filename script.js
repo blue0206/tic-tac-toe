@@ -110,7 +110,6 @@ const ScreenController = (function() {
     };
 
     const resetGameBoard = () => {
-        Gameboard.resetBoard();
         const boardSlots = document.querySelectorAll('.board-row button');
         for (let i=0; i<boardSlots.length; i++)
         {
@@ -192,11 +191,29 @@ const GameController = (function() {
         }
     };
 
+    const resetGameBoard = () => {
+        Gameboard.resetBoard();
+        ScreenController.resetGameBoard();
+    };
+
+    const resetScoreBoard = () => {
+        playerX.resetScore();
+        playerO.resetScore();
+        ScreenController.resetScoreBoard();
+    };
+
+    const reset = () => {
+        resetGameBoard();
+        resetScoreBoard();
+    };
+
     return {
         setPlayerXName,
         setPlayerOName,
         playerXMove,
-        playerOMove
+        playerOMove,
+        resetGameBoard,
+        reset
     };
 })();
 
@@ -232,6 +249,7 @@ submitBtn.addEventListener('click', () => {
     const nameO = document.querySelector('#player-o').value;
     GameController.setPlayerXName(nameX);
     GameController.setPlayerOName(nameO);
+    GameController.reset();
 
     sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
 });
@@ -240,5 +258,5 @@ submitBtn.addEventListener('click', () => {
 // Attach event listener to the game RESET button.
 const resetBtn = document.querySelector('.configure button');
 resetBtn.addEventListener('click', () => {
-
+    GameController.reset();
 });
