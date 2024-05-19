@@ -57,7 +57,7 @@ const Gameboard = (function() {
         return false;
     };
 
-    return { resetBoard, updateBoard, checkSpaceVacancy, checkMatch };
+    return { resetBoard, updateBoard, checkSpaceVacancy, validateMove, checkMatch };
 })();
 
 const Player = function(name, choice) {
