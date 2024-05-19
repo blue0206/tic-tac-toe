@@ -199,6 +199,8 @@ main {
 
 .board-row > button {
     cursor: pointer;
+    font-size: 6.5rem;
+    line-height: 0;
 }
 
 button#b0 {
