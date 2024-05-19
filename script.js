@@ -162,42 +162,41 @@ const GameController = (function() {
         ScreenController.setPlayerOName(name);
     };
 
-    const playGame = () => {
-        while (Gameboard.checkSpaceVacancy())
+    const playerXMove = (slot) => {
+        preMoveChecks();
+        if (Gameboard.validateMove(slot))
         {
-            //Player X's turn
-            playerX.playerMove();
-            if (Gameboard.checkMatch())
-            {
-                console.log("The winner is X!");
-                result = `${playerX.name} WINS!`;
-                playerX.incrementScore();
-                ScreenController.updateXScore(playerX.getScore());
-                break;
-            }
-            if (!Gameboard.checkSpaceVacancy())
-            {
-                break;
-            }
-
-            //Player O's turn
-            playerO.playerMove();
-            if (Gameboard.checkMatch())
-            {
-                console.log("The winner is O!");
-                result = `${playerO.name} WINS!`;
-                playerO.incrementScore();
-                ScreenController.updateOScore(playerO.getScore());
-                break;
-            }
+            Gameboard.updateBoard(playerX.getChoice(), slot);
         }
-        return result;
+    };
+
+    const playerOMove = (slot) => {
+        preMoveChecks();
+        if (Gameboard.validateMove(slot))
+        {
+            Gameboard.updateBoard(playerO.getChoice(), slot);
+        }
+    };
+
+    const preMoveChecks = () => {
+        if (Gameboard.checkMatch())
+        {
+            console.log("The winner is X!");
+            result = `${playerX.name} WINS!`;
+            playerX.incrementScore();
+            ScreenController.updateXScore(playerX.getScore());
+        }
+        if (!Gameboard.checkSpaceVacancy())
+        {
+            //  Code
+        }
     };
 
     return {
         setPlayerXName,
         setPlayerOName,
-        playGame 
+        playerXMove,
+        playerOMove
     };
 })();
 
