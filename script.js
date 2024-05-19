@@ -288,8 +288,10 @@ sidebarToggleBtn.addEventListener('click', () => {
 // Attach event listener to 'Start Game' form button.
 const submitBtn = document.querySelector('button[type="reset"]');
 submitBtn.addEventListener('click', () => {
-    const nameX = document.querySelector('#player-x').value;
-    const nameO = document.querySelector('#player-o').value;
+    let nameX = document.querySelector('#player-x').value;
+    let nameO = document.querySelector('#player-o').value;
+    nameX = nameX == "" ? "Player X" : nameX;
+    nameO = nameO == "" ? "Player O" : nameO;
     GameController.setPlayerXName(nameX);
     GameController.setPlayerOName(nameO);
     GameController.reset();
