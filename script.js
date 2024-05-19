@@ -77,10 +77,6 @@ const Player = function(name, choice) {
 
     const resetScore = () => score = 0;
 
-    const playerMove = () => {
-        Gameboard.updateBoard(choice, ScreenController.playerInput);
-    };
-
     return { 
         getName,
         setName,
@@ -88,8 +84,7 @@ const Player = function(name, choice) {
         setChoice,
         incrementScore, 
         getScore, 
-        resetScore, 
-        playerMove 
+        resetScore
     };
 };
 
@@ -99,8 +94,6 @@ const ScreenController = (function() {
     let playerOName = document.querySelector('.players h2:last-child');
     const playerXScore = document.querySelector(".score h2:first-child");
     const playerOScore = document.querySelector(".score h2:last-child");
-    const playerX = Player("Blue", "X");
-    const playerO = Player("Red", "O");
 
     const board = document.querySelector(".board");
     let boardSlot = "";
@@ -110,20 +103,10 @@ const ScreenController = (function() {
 
     const setPlayerXName = (xName) => {
         playerXName.textContent = xName;
-        playerX.setName(xName);
     }
         
     const setPlayerOName = (oName) => {
         playerOName.textContent = oName
-        playerO.setName(oName);
-    };
-
-    const getPlayerX = () => playerX;
-
-    const getPlayerO = () => playerO;
-    
-    const playerInput = () => {
-        return boardSlot;
     };
 
     const resetGameBoard = () => {
@@ -136,8 +119,6 @@ const ScreenController = (function() {
     };
 
     const resetScoreBoard = () => {
-        playerX.resetScore();
-        playerO.resetScore();
         playerXScore.textContent = 0;
         playerOScore.textContent = 0;
     };
@@ -157,9 +138,6 @@ const ScreenController = (function() {
     return { 
         setPlayerXName, 
         setPlayerOName, 
-        getPlayerX, 
-        getPlayerO,
-        playerInput, 
         resetGameBoard,
         resetScoreBoard,
         updateXScore,
@@ -168,7 +146,7 @@ const ScreenController = (function() {
 
 })();
 
-const GameController = (function(playerX, playerO) {
+const GameController = (function() {
     let result = "DRAW";
 
     const playGame = () => {
@@ -204,7 +182,7 @@ const GameController = (function(playerX, playerO) {
     };
 
     return { playGame };
-})(ScreenController.getPlayerX(), ScreenController.getPlayerO());
+})();
 
 
 
@@ -236,9 +214,6 @@ const submitBtn = document.querySelector('button[type="reset"]');
 submitBtn.addEventListener('click', () => {
     const nameX = document.querySelector('#player-x').value;
     const nameO = document.querySelector('#player-o').value;
-    ScreenController.setPlayerXName(nameX);
-    ScreenController.setPlayerOName(nameO);
-    ScreenController.reset();
 
     sidebarToggleBtn.dispatchEvent(new MouseEvent('click'));
 });
@@ -247,6 +222,5 @@ submitBtn.addEventListener('click', () => {
 // Attach event listener to the game RESET button.
 const resetBtn = document.querySelector('.configure button');
 resetBtn.addEventListener('click', () => {
-    ScreenController.resetGameBoard();
-    ScreenController.resetScoreBoard();
+
 });
