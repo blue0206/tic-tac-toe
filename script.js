@@ -149,12 +149,13 @@ const ScreenController = (function() {
 
     const displayResult = (result) => {
         const display = document.querySelector('.commentary');
+        const resultDiv = document.querySelector('.result');
         display.style.visibility = 'visible';
-        display.textContent = result;
+        resultDiv.textContent = result;
 
         display.addEventListener('click', () => {
             display.style.visibility = 'hidden';
-            display.textContent = "";
+            resultDiv.textContent = "";
             GameController.resetGameBoard();
         });
     };

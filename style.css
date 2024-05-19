@@ -165,13 +165,21 @@ main {
     visibility: hidden;
     position: absolute;
     place-self: center;
+
+    background-color: transparent;
     
-    background-color: dodgerblue;
-    
-    height: 50%;
+    height: 100%;
     width: 100%;
 
     font-size: 5rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+}
+
+.result {
+    background-color: dodgerblue;
 
     display: grid;
     place-content: center;
