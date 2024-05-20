@@ -240,12 +240,18 @@ main {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
     place-content: start center;
+
+    position: relative;
 }
 
 .score-table {
     display: grid;
     padding: 16px 40px;
     gap: 35px;
+
+    position: sticky;
+    top: 1px;
+    backdrop-filter: brightness(85%);
 }
 .players {
     display: grid;
