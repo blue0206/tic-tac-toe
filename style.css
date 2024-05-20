@@ -380,9 +380,21 @@ button#b8 {
 }
 
 .configure button {
-    border: var(--board-border);
     width: fit-content;
     padding: 8px 25px;
+    border-radius: 8px;
+
+    background-color: hsl(270, 5%, 32%);
+    color: hsl(0, 0%, 100%);
+
+    cursor: pointer;
+}
+
+.configure button:hover,
+.configure button:active,
+.configure button:focus {
+    background-color: hsla(0, 0%, 99%, 0.87);
+    color: hsl(0, 0%, 0%);
 }
 
 /* Footer Styling */
