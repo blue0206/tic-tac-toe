@@ -229,7 +229,9 @@ input:hover {
     cursor: pointer;
 }
 
-.form-element > button:hover {
+.form-element > button:hover, 
+.form-element > button:focus,
+.form-element > button:active {
     background-color: hsl(207, 100%, 29%);
     color: hsl(0, 0%, 100%);
 }
