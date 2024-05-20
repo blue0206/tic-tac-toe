@@ -222,7 +222,7 @@ const GameController = (function() {
             ScreenController.updateXScore(playerX.getScore());
             ScreenController.displayResult(result);
         }
-        if (!Gameboard.checkSpaceVacancy())
+        else if (!Gameboard.checkSpaceVacancy())
         {
             ScreenController.displayResult(result = "DRAW");
         }
@@ -236,7 +236,7 @@ const GameController = (function() {
             ScreenController.updateOScore(playerO.getScore());
             ScreenController.displayResult(result);
         }
-        if (!Gameboard.checkSpaceVacancy())
+        else if (!Gameboard.checkSpaceVacancy())
         {
             ScreenController.displayResult(result = "DRAW");
         }
