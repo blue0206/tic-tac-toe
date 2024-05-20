@@ -255,6 +255,10 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.score-table h2 {
+    display: grid;
+    place-content: center;
+}
 
 .gameboard {
     padding-block: 35px;
