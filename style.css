@@ -73,7 +73,7 @@ body {
     min-height: 100dvh;
 
     display: grid;
-    grid-template-rows: minmax(auto, 150px) 1fr minmax(auto, 125px);
+    grid-template-rows: minmax(auto, 150px) 1fr minmax(auto, 85px);
     grid-template-columns: auto 1fr;
     grid-template-areas: 'sidebar header'
                         'sidebar main'
@@ -110,7 +110,7 @@ main {
 
 footer {
     grid-area: footer;
-    background-color: black;
+    background-color: hsl(0, 0%, 0%);
 }
 
 /* Header Styling */
@@ -381,5 +381,30 @@ button#b8 {
 footer {
     display: grid;
     place-content: center;
+
     font-size: 1rem;
+    letter-spacing: 0.5px;
+    color: hsl(304, 100%, 90%)
+}
+
+footer img {
+    height: 1.5em;
+    aspect-ratio: 1 / 1;
+}
+
+footer > div {
+    display: grid;
+    place-content: center;
+    grid-auto-flow: column;
+    gap: 5px;
+}
+
+footer a {
+    display: grid;
+    place-content: center;
+    grid-auto-flow: column;
+    gap: 5px;
+
+    color: hsl(224, 100%, 64%);
+    text-decoration: none;
 }
