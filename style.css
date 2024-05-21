@@ -61,7 +61,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* My Styling */
 :root {
-    --board-border: 2px solid white;
+    --board-border: 2.5px solid hsl(208, 100%, 97%);
 }
 
 body {
@@ -302,19 +302,20 @@ main {
 }
 
 .display-container {
-    background-color: dodgerblue;
+    background-color: rgba(0, 15, 29, 0.486);
+    color: hsl(213, 100%, 98%);
+    backdrop-filter: blur(16px);
     cursor: pointer;
-}
 
-.result {
+    padding-block: 35px;
+    border-radius: 35px;
+
     display: grid;
-    place-content: center;
+    place-items: center;
+    gap: 16px;
 }
 
 .notify {
-    display: grid;
-    place-content: center;
-
     font-size: 1rem;
 }
 
