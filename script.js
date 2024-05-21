@@ -14,7 +14,6 @@ const Gameboard = (function() {
     //Fill board slot with player input
     const updateBoard = (input, slot) => {
         gameboard[slot] = input;
-        console.log(gameboard);
     };
 
     const checkSpaceVacancy = () => {
@@ -111,7 +110,6 @@ const ScreenController = (function() {
                 {
                     GameController.playerOMove(slot);
                 }
-                console.log(playerXTurn);
         }
     });
 
