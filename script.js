@@ -93,8 +93,6 @@ const Player = function(name, choice) {
     const setName = (newName) => name = newName;
 
     const getChoice = () => choice;
-
-    const setChoice = (newChoice=choice) => choice = newChoice;
     
     const incrementScore = () => score++;
 
@@ -106,7 +104,6 @@ const Player = function(name, choice) {
         getName,
         setName,
         getChoice,
-        setChoice,
         incrementScore, 
         getScore, 
         resetScore
