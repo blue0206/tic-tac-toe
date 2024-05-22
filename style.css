@@ -286,6 +286,7 @@ main {
     visibility: hidden;
     position: absolute;
     place-self: center;
+    z-index: 2;
 
     background-color: transparent;
     
@@ -320,6 +321,53 @@ main {
 .slash {
     visibility: hidden;
     position: absolute;
+    z-index: 1;
+
+    height: 100%;
+    width: 100%;
+}
+.strike {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.strike.hr {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center stretch;
+}
+
+.strike.vr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.strike.vr > div {
+    display: flex;
+    justify-content: center;
+}
+
+.strike.dg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.strike.dg > div {
+    display: flex;
+}
+.strike.dg > div:first-child {
+    justify-content: flex-end;
+}
+.strike.dg > div:first-child > hr {
+    transform: rotate(45deg) scale(1.4);
+}
+.strike.dg > div:last-child > hr {
+    transform: rotate(-45deg) scale(1.4);
+}
+
+hr {
+    border-color: hsl(208, 100%, 92%);
+    border-width: 3.2px;
+    border-radius: 38%;
 }
 
 .board-row {
