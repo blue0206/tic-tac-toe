@@ -109,7 +109,7 @@ footer {
 header {
     display: grid;
     place-content: center;
-    font-size: 2rem;
+    font-size: 1.85rem;
 
     position: relative;
 }
